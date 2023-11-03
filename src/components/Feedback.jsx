@@ -67,11 +67,13 @@ export class Feedback extends Component {
               <StatisticsSpan>Bad {this.state.bad}</StatisticsSpan>
             </Li>
             <Li>
-              <StatisticsSpan>Total {totalFeedback}</StatisticsSpan>
+              <StatisticsSpan>Total {this.countTotalFeedback()}</StatisticsSpan>
             </Li>
             <Li>
               <StatisticsSpan>
-                Positive feedback {this.countPositiveFeedbackPercentage()}%
+                {this.countPositiveFeedbackPercentage() > 0
+                  ? `Positive feedback ${this.countPositiveFeedbackPercentage()}%`
+                  : `Positive statistics is not available`}
               </StatisticsSpan>
             </Li>
           </StatisticsList>
