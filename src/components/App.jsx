@@ -5,8 +5,8 @@ export const App = () => {
   return (
     <Section>
       <Container>
-        <Title>Please leave feedback</Title>
-        <Feedback ></Feedback >
+        <Title>Hello</Title>
+        <Feedback></Feedback >
       </Container>
     </Section>
   );

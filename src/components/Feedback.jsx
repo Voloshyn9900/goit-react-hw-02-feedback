@@ -1,13 +1,8 @@
 import { Component } from 'react';
-import {Notification} from './Notification';
-import {
-  Button,
-  StatisticsSpan,
-  Li,
-  FeedbackBlock,
-  ButtonList,
-  StatisticsList,
-} from './Feedback.styled';
+import { Notification } from './Notification/Notification';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Statistics } from './Statistics/Statistics';
+import { FeedbackBlock } from './Feedback.styled';
 
 export class Feedback extends Component {
   constructor() {
@@ -19,7 +14,7 @@ export class Feedback extends Component {
     };
   }
 
-  handleClick = e => {
+  onLeaveFeedback = e => {
     this.setState(prevState => {
       return {
         [e]: prevState[e] + 1,
@@ -45,43 +40,22 @@ export class Feedback extends Component {
     const totalFeedback = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
 
-
     return (
       <FeedbackBlock>
-        <ButtonList>
-          <Li>
-            <Button onClick={() => this.handleClick('good')}>Good</Button>
-          </Li>
-          <Li>
-            <Button onClick={() => this.handleClick('neutral')}>Neutral</Button>
-          </Li>
-          <Li>
-            <Button onClick={() => this.handleClick('bad')}>Bad</Button>
-          </Li>
-        </ButtonList>
+        <h2>Please leave feedback</h2>
+        <FeedbackOptions
+          options={{ good, neutral, bad }}
+          onLeaveFeedback={this.onLeaveFeedback}
+        />
         <h2>Statistics</h2>
         {totalFeedback > 0 ? ( // Проверка на наличие хотя бы одного отзыва
-          <StatisticsList>
-            <Li>
-              <StatisticsSpan>Good {good}</StatisticsSpan>
-            </Li>
-            <Li>
-              <StatisticsSpan>Neutral {neutral}</StatisticsSpan>
-            </Li>
-            <Li>
-              <StatisticsSpan>Bad {bad}</StatisticsSpan>
-            </Li>
-            <Li>
-              <StatisticsSpan>Total {this.countTotalFeedback()}</StatisticsSpan>
-            </Li>
-            <Li>
-              <StatisticsSpan>
-                {positivePercentage > 0
-                  ? `Positive feedback ${this.countPositiveFeedbackPercentage()}%`
-                  : `Positive statistics is not available`}
-              </StatisticsSpan>
-            </Li>
-          </StatisticsList>
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={totalFeedback}
+            positivePercentage={positivePercentage}
+          />
         ) : (
           <Notification message="There is no feedback" />
         )}

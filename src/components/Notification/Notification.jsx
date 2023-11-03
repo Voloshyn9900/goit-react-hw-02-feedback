@@ -1,4 +1,4 @@
-import {NotificationEmp} from "./Notification.styled"
+import {NotificationEmp} from "../Notification.styled"
 
 
 export const Notification = (props) => {
