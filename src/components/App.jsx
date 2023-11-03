@@ -1,4 +1,4 @@
-import { Featback } from './Featback'
+import { Feedback } from './Feedback';
 import { Section, Container, Title } from './App.styled';
 
 export const App = () => {
@@ -6,7 +6,7 @@ export const App = () => {
     <Section>
       <Container>
         <Title>Please leave feedback</Title>
-        <Featback></Featback>
+        <Feedback ></Feedback >
       </Container>
     </Section>
   );

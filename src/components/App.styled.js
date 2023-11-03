@@ -13,7 +13,7 @@ export const Container = styled.div`
   margin-right: auto;
 
   border: 3px solid ${props => props.theme.colors.lightBlue};
-  border-radius: ${props => props.theme.radii.lg};
+  border-radius: ${props => props.theme.radii.md};
 
 `;
 
